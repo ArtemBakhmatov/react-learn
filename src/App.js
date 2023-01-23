@@ -1,44 +1,35 @@
-import {Component} from 'react';
+import React from 'react';
 import './App.css';
 
-class WhoAmI extends Component {
+class App extends React.Component {
 	constructor(props) {
-		super(props);
-		this.state = {  // Это диначеская вещь которая будет менятся (вводим статичные данные)
-			years: 27,
-			text: '+++'
-		}
+	  super(props);
 	}
-
-	nextYear = () => {
-		this.setState(state => ({ // с помощью этого метода будет изменение state -> приходит из this.state
-			years: state.years + 1  // будет years меняться динамически
-		}));
-	}
-/* В this.state можем написать все свойтва, а в this.setState добавим только те свойтва из this.state, 
-которые хотим изменить */
+	
+	// Используйте только стрелочную форму методов
+	// Почему? Подробный ответ будет в следующем уроке
+	
 	render() {
-		const {name, surname, link} = this.props;
-		return (
-			<div>
-				<button onClick={this.nextYear}>{this.state.text}</button>
-				<h1>My name is {name}, surname - {surname}, age - {this.state.years}</h1>
-				<a href={link}>My profile</a>
-			</div>
-		)
-	}
-}
-
-function App() {
-	return (
-		<div className='App'>
-			<WhoAmI name='John' surname='Smith' link='facebook.com' />
-			<WhoAmI name='Alex' surname='Shepard' link='vk.com' />
+	  return (
+		<div class="app">
+		  <div class="counter">10</div>
+		  <div class="controls">
+			<button>INC</button>
+			<button>DEC</button>
+			<button>RND</button>
+			<button>RESET</button>
+		  </div>
 		</div>
-	);
-}
+	  )
+	}
+  }
 
 export default App;
+  
+  // 1) Начальное значение счетчика должно передаваться через props
+  // 2) INC и DEC увеличивают и уменьшают счетчик соответственно на 1. Без ограничений, но можете добавить границу в -50/50. По достижению границы ничего не происходит
+  // 3) RND изменяет счетчик в случайное значение от -50 до 50. Конструкцию можете прогуглить за 20 секунд :) Не зависит от предыдущего состояния
+  // 4) RESET сбрасывает счетчик в 0 или в начальное значение из пропсов. Выберите один из вариантов
 
 // props -> только для чтения
 /* вывод:
