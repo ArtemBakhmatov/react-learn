@@ -3,26 +3,57 @@ import './App.css';
 
 class App extends React.Component {
 	constructor(props) {
-	  super(props);
+		super(props);
+		this.state = {
+			counter: this.props.counter // при вызове класса <App counter={0} />
+			//counter: 0  // можно прописать значение 0 тут // при вызове класса <App />
+		}
 	}
 	
-	// Используйте только стрелочную форму методов
-	// Почему? Подробный ответ будет в следующем уроке
+	incCounter = () => {  // увеличиваем на единицу
+		if (this.state.counter < 50) {
+			this.setState(state => ({
+				counter: state.counter + 1
+			}));
+		}
+	}
+
+	decCounter = () => {   // уменьшаем на единицу
+		if (this.state.counter > -50) {
+			this.setState(state => ({
+				counter: state.counter - 1
+			}));
+		}
+	}
+
+	rndCounter = () => {  // рандомные числа от 50 и до -50
+		this.setState({
+			counter: +(Math.random() * (50 - -50) + -50).toFixed(0)
+		}); // (50 - -50) + -50) -> диапазон от 50 до -50 // toFixed(0) -> округление до целого числа
+	}
+
+	resetCounter = () => { // сбросить, тоесть будет ноль
+		this.setState({
+			counter: this.props.counter // при вызове класса <App counter={0} />
+			//counter: 0  // можно прописать значение 0 тут // при вызове класса <App />
+		});
+	}
 	
 	render() {
-	  return (
-		<div class="app">
-		  <div class="counter">10</div>
-		  <div class="controls">
-			<button>INC</button>
-			<button>DEC</button>
-			<button>RND</button>
-			<button>RESET</button>
-		  </div>
-		</div>
-	  )
+		const {counter} = this.state
+		return (
+			<div className="app">
+			<div className="counter">{counter}</div>
+			<div className="controls">
+				<button onClick={this.incCounter}>INC</button>
+				<button onClick={this.decCounter}>DEC</button>
+				<button onClick={this.rndCounter}>RND</button>
+				<button onClick={this.resetCounter}>RESET</button>
+			</div>
+			</div>
+		)
 	}
-  }
+}
 
 export default App;
   
