@@ -9,8 +9,7 @@ class WhoAmI extends Component {
 			text: '+++',
 			position: ''
 		}
-		this.nextYear = this.nextYear.bind(this);
-		//обычное свойство = обращемся к методу nextYear() и привязываем к конкретному экземляру класса bind()
+		
 	}
 
 	nextYear() {
@@ -35,7 +34,7 @@ class WhoAmI extends Component {
 		
 		return (
 			<div>
-				<button onClick={this.nextYear}>{this.state.text}</button>
+				<button onClick={() => this.nextYear()}>{this.state.text}</button>
 				<h1>My name is {name}, surname - {surname}, 
 				age - {years}, 
 				position - {position}</h1>
