@@ -9,9 +9,11 @@ class WhoAmI extends Component {
 			text: '+++',
 			position: ''
 		}
+		this.nextYear = this.nextYear.bind(this);
+		//обычное свойство = обращемся к методу nextYear() и привязываем к конкретному экземляру класса bind()
 	}
 
-	nextYear = () => {
+	nextYear() {
 		this.setState(state => ({ // с помощью этого метода будет изменение state -> приходит из this.state
 			years: state.years + 1
 			 
