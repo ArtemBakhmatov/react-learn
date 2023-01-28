@@ -6,6 +6,9 @@ import './index.css';
 import App from './App';
 
 import { Button } from './App';
+import BootstrapTest from './BootstrapTest';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const BigButton = styled(Button)`
@@ -19,9 +22,10 @@ root.render(
   <React.StrictMode>
     <App />
     <BigButton as="a">Отправить отчет</BigButton>
+	<BootstrapTest/>
   </React.StrictMode>
 );
 
-// 1) Установить npm install --save-dev styled-components
+// 1) Установить npm install react-bootstrap bootstrap -D
 
 
